@@ -34,3 +34,13 @@ module "hello_world_function" {
   gateway_id            = module.lambda.gateway_id
   gateway_execution_arn = module.lambda.gateway_execution_arn
 }
+
+module "goodbye_world_function" {
+  source = "./modules/function"
+  
+  source_path = "${path.module}/goodbye-world"
+  role_arn = module.lambda.role_arn
+  bucket_id = module.lambda.bucket_id
+  gateway_id = module.lambda.gateway_id
+  gateway_execution_arn = module.lambda.gateway_execution_arn
+}
